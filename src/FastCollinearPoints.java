@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FastCollinearPoints {
-    private ArrayList<LineSegment> jSegments = new ArrayList<>();
+    private ArrayList<LineSegment> segments = new ArrayList<>();
 
     public FastCollinearPoints(Point[] points) {
         // check corner cases
@@ -25,7 +25,7 @@ public class FastCollinearPoints {
                     last++;
                 }
                 if (last - first >= 3 && pointsCopy[p].compareTo(pointsCopy[first]) < 0) {
-                    jSegments.add(new LineSegment(pointsCopy[p], pointsCopy[last - 1]));
+                    segments.add(new LineSegment(pointsCopy[p], pointsCopy[last - 1]));
                 }
                 first = last;
             }
@@ -33,11 +33,11 @@ public class FastCollinearPoints {
     }
 
     public int numberOfSegments() {
-        return jSegments.size();
+        return segments.size();
     }
 
     public LineSegment[] segments() {
-        return jSegments.toArray(new LineSegment[jSegments.size()]);
+        return segments.toArray(new LineSegment[0]);
     }
 
     private boolean hasDuplicate(Point[] points) {
